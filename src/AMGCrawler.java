@@ -9,7 +9,7 @@ import java.io.FileWriter;
  * Created by andrew on 4/20/17.
  */
 //amg stands for ASUS MSI Gigabyte
-public class amgCrawler {
+public class AMGCrawler {
 	String url_MSI="http://www.pro-star.com/index.php?r=product/index&filter=32";
 	String url_ASUS="http://www.pro-star.com/index.php?r=product/index&filter=6";
 	String url_Gigabyte="http://www.pro-star.com/index.php?r=product/index&filter=30";
