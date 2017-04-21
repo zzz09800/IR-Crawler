@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Created by andrew on 4/20/17.
  */
-//amg stands for ASUS MSI Gigabyte & the famout Apple
+//amg stands for ASUS MSI Gigabyte & the famous Apple
 public class AMGCrawler {
 	String url_MSI="http://www.pro-star.com/index.php?r=product/index&filter=32";
 	String url_ASUS="http://www.pro-star.com/index.php?r=product/index&filter=6";
@@ -51,7 +51,7 @@ public class AMGCrawler {
 		while(it.hasNext())
 		{
 			Map.Entry tuple = (Map.Entry) it.next();
-			dump_file_name = tuple.getKey()+"Content";
+			dump_file_name = tuple.getKey()+"_Content";
 			page_dump = new File("AMG/" + dump_file_name);
 
 			try{
