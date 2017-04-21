@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -48,6 +49,59 @@ public class JobRunner {
 			else
 				return false;
 		}
+
+		if(brand.equals("Dell_home"))
+		{
+			url=url.toLowerCase();
+			if(url.contains("productdetails")&&!url.contains("desktop"))
+				return true;
+			else
+				return false;
+		}
+
+		if(brand.equals("Dell_work"))
+		{
+			url=url.toLowerCase();
+			if(url.contains("latitude")||url.contains("inspiron")||url.contains("precision")||url.contains("xps")||url.contains("chromebook"))
+				return true;
+			else
+				return false;
+		}
 		return false;
+	}
+
+	public HashSet<String> hrefExtractor(String content)
+	{
+		int i,j;
+		int pin_start, pin_end;
+		HashSet<String> hrefs = new HashSet<String>();
+
+		i=0;
+		while(i<content.length()-4)
+		{
+			if(content.substring(i,i+4).equals("href")){
+				j=i;
+				while(content.charAt(j)!='\"') {
+					j++;
+				}
+				j++;
+				pin_start=j;
+				while(content.charAt(j)!='\"'&&content.charAt(j)!='?'&&content.charAt(j)!='#') {
+					j++;
+				}
+				pin_end=j;
+
+				hrefs.add(content.substring(pin_start,pin_end));
+				j++;
+				i=j;
+				continue;
+			}
+			i++;
+		}
+
+		hrefs.remove("");
+		hrefs.remove("&");
+
+		return hrefs;
 	}
 }
