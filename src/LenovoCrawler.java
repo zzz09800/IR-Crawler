@@ -24,7 +24,7 @@ public class LenovoCrawler {
 
 		JobRunner runner = new JobRunner();
 		String res;
-		res=runner.JavaHTTPGetContent(url_Lenovo);
+		res=runner.JavaHTTPGetContent(this.url_Lenovo);
 		res=res.replaceAll("\\t+","");
 
 		HashSet<String> hrefs;
@@ -49,7 +49,7 @@ public class LenovoCrawler {
 		{
 			if(runner.Potential_Checker("Lenovo",iter_url))
 			{
-				String target_url=url_Lenovo_base+iter_url;
+				String target_url=this.url_Lenovo_base+iter_url;
 				potential_target_urls.add(target_url);
 				System.out.println(target_url);
 

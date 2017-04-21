@@ -32,9 +32,9 @@ public class AcerCrawler {
 		hrefs.clear();
 
 		try{
-			String res= Jsoup.connect(url_Acer_home).get().html();
+			String res= Jsoup.connect(this.url_Acer_home).get().html();
 			hrefs.addAll(runner.hrefExtractor(res));
-			res=Jsoup.connect(url_Acer_work).get().html();
+			res=Jsoup.connect(this.url_Acer_work).get().html();
 			hrefs.addAll(runner.hrefExtractor(res));
 		} catch (Exception e) {
 			System.out.println("Exception: " + e);
@@ -45,7 +45,7 @@ public class AcerCrawler {
 		{
 			if(runner.Potential_Checker("Acer_home",iter_url))
 			{
-				String url_construct = url_Acer_home_base+iter_url;
+				String url_construct = this.url_Acer_home_base+iter_url;
 				url_construct=url_construct.replace("series","models/laptops");
 				potential_target_urls.add(url_construct);
 				//System.out.println(url_construct);
