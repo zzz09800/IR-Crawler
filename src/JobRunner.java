@@ -62,11 +62,24 @@ public class JobRunner {
 		if(brand.equals("Dell_work"))
 		{
 			url=url.toLowerCase();
+			if(url.endsWith(".aspx"))
+				return false;
 			if(url.contains("latitude")||url.contains("inspiron")||url.contains("precision")||url.contains("xps")||url.contains("chromebook"))
 				return true;
 			else
 				return false;
 		}
+
+		if(brand.equals("Acer_home"))
+		{
+			url=url.toLowerCase();
+			if(url.contains("series")&&!url.startsWith("http"))
+				return true;
+			else
+				return false;
+		}
+
+
 		return false;
 	}
 

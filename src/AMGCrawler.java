@@ -14,12 +14,22 @@ import java.util.Map;
  */
 //amg stands for ASUS MSI Gigabyte & the famous Apple
 public class AMGCrawler {
-	String url_MSI="http://www.pro-star.com/index.php?r=product/index&filter=32";
-	String url_ASUS="http://www.pro-star.com/index.php?r=product/index&filter=6";
-	String url_Gigabyte="http://www.pro-star.com/index.php?r=product/index&filter=30";
-	String url_Apple_1="https://www.apple.com/macbook/specs/";
-	String url_Apple_2="https://www.apple.com/macbook-air/specs/";
-	String url_Apple_3="https://www.apple.com/macbook-pro/specs/";
+	String url_MSI;
+	String url_ASUS;
+	String url_Gigabyte;
+	String url_Apple_1;
+	String url_Apple_2;
+	String url_Apple_3;
+
+	public AMGCrawler()
+	{
+		this.url_MSI="http://www.pro-star.com/index.php?r=product/index&filter=32";
+		this.url_ASUS="http://www.pro-star.com/index.php?r=product/index&filter=6";
+		this.url_Gigabyte="http://www.pro-star.com/index.php?r=product/index&filter=30";
+		this.url_Apple_1="https://www.apple.com/macbook/specs/";
+		this.url_Apple_2="https://www.apple.com/macbook-air/specs/";
+		this.url_Apple_3="https://www.apple.com/macbook-pro/specs/";
+	}
 
 
 	public void Crawl(){
