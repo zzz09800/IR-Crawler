@@ -14,6 +14,14 @@ import java.util.HashSet;
 public class main {
 	public static void main(String[] args) throws Exception
 	{
+		AcerCrawler acerCrawler = new AcerCrawler();
+		AMGCrawler amgCrawler = new AMGCrawler();
+		DellCrawler dellCrawler = new DellCrawler();
+		LenovoCrawler lenovoCrawler = new LenovoCrawler();
 
+		acerCrawler.Crawl();
+		amgCrawler.Crawl();
+		dellCrawler.Crawl();
+		lenovoCrawler.Crawl();
 	}
 }
