@@ -38,12 +38,12 @@ public class AMGCrawler {
 		target_urls.put("Apple3",url_Apple_3);
 
 		Iterator it = target_urls.entrySet().iterator();
-		try{
+		try {
 			File dump_dir = new File("AMG");
-			if(dump_dir.exists())
+			if (dump_dir.exists())
 				FileUtils.deleteDirectory(dump_dir);
 			dump_dir.mkdir();
-		}catch (Exception e){
+		} catch (Exception e){
 			System.out.println("Exception: " + e);
 			e.printStackTrace();
 		}
