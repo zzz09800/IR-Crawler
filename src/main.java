@@ -10,6 +10,6 @@ public class main {
 		AMGCrawler amgCrawler = new AMGCrawler();
 		JobRunner runner = new JobRunner();
 
-		dellCrawler.Crawl();
+		amgCrawler.Crawl();
 	}
 }
