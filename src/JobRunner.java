@@ -53,7 +53,9 @@ public class JobRunner {
 		if(brand.equals("Dell_home"))
 		{
 			url=url.toLowerCase();
-			if(url.contains("productdetails")&&!url.contains("desktop"))
+			if(url.contains("chrome"))
+				return false;
+			if(url.contains("productdetails")&&url.contains("laptop")&&!url.contains("desktop")&&!url.endsWith("aio")&&!url.contains("console"))
 				return true;
 			else
 				return false;
@@ -62,7 +64,7 @@ public class JobRunner {
 		if(brand.equals("Dell_work"))
 		{
 			url=url.toLowerCase();
-			if(url.endsWith(".aspx"))
+			if(url.endsWith(".aspx")||url.endsWith("aio")||url.contains("console")||url.contains("chrome"))
 				return false;
 			if(url.contains("latitude")||url.contains("inspiron")||url.contains("precision")||url.contains("xps")||url.contains("chromebook"))
 				return true;
