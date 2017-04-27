@@ -1,9 +1,8 @@
 import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import java.io.*;
+import java.util.Arrays;
 import java.util.HashSet;
 
 /**
@@ -54,7 +53,7 @@ public class DellCrawler {
 		}
 
 		hrefs.clear();
-		try{
+		/*try{
 			String res= Jsoup.connect(this.url_Dell_work).get().html();
 			hrefs.addAll(runner.hrefExtractor(res));
 		} catch (Exception e) {
@@ -73,7 +72,7 @@ public class DellCrawler {
 				potential_target_urls.add(iter_url);
 				//System.out.println(iter_url);
 			}
-		}
+		}*/
 
 		/*String res=Jsoup.connect("http://www.dell.com/en-us/shop/productdetails/xps-15-9560-laptop").get().html();
 		System.out.println(res);*/
@@ -91,7 +90,7 @@ public class DellCrawler {
 		for(String iter_url:potential_target_urls)
 		{
 			System.out.println(iter_url);
-			try{
+			/*try{
 				String res=Jsoup.connect(iter_url).get().html();
 				String dump_file_name = iter_url.replace("http://","").replaceAll("/","_");
 				File page_dump=new File("Dell/"+dump_file_name);
@@ -108,6 +107,38 @@ public class DellCrawler {
 				bufferedFileWriter.close();
 				fileWriter.close();
 			} catch (Exception e) {
+				System.out.println("Exception: " + e);
+				e.printStackTrace();
+			}*/
+			try{
+				String dump_file_name = iter_url.replace("http://","").replaceAll("/","_");
+				File page_dump=new File("Dell/"+dump_file_name);
+
+				if(page_dump.exists())
+					FileUtils.forceDelete(page_dump);
+				page_dump.createNewFile();
+				FileWriter fileWriter = new FileWriter(page_dump);
+				BufferedWriter bufferedFileWriter = new BufferedWriter(fileWriter);
+
+				Process process = new ProcessBuilder(
+						"lib/PhantomJS/bin/phantomjs","lib/PhantomJS/bin/DellCrawl.js",iter_url).start();
+
+				InputStream is = process.getInputStream();
+				InputStreamReader isr = new InputStreamReader(is);
+				BufferedReader br = new BufferedReader(isr);
+				String line;
+				String res="";
+
+				while ((line = br.readLine()) != null) {
+					res=res+line.trim();
+					//System.out.println(line);
+				}
+
+				bufferedFileWriter.write(res);
+				bufferedFileWriter.flush();
+				bufferedFileWriter.close();
+				fileWriter.close();
+			}catch (Exception e) {
 				System.out.println("Exception: " + e);
 				e.printStackTrace();
 			}

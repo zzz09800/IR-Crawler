@@ -19,9 +19,9 @@ public class main {
 		DellCrawler dellCrawler = new DellCrawler();
 		LenovoCrawler lenovoCrawler = new LenovoCrawler();
 
-		acerCrawler.Crawl();
-		amgCrawler.Crawl();
+		//acerCrawler.Crawl();
+		//amgCrawler.Crawl();
 		dellCrawler.Crawl();
-		lenovoCrawler.Crawl();
+		//lenovoCrawler.Crawl();
 	}
 }
